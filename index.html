@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Dely Krousty — Du crousty, du vrai. Poulet pané maison, sauces signatures, halal. Menu 9.90€ avec boisson. Maisons-Alfort.">
+<title>Dely Krousty — Ready to eat?</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Russo+One&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  /* ===== TOKENS ===== */
+  :root {
+    --purple: #6A00FF;
+    --purple-deep: #2B0A4A;
+    --purple-mid: #4500B5;
+    --purple-dark: #160626;
+    --purple-card: #380985;
+    --yellow: #FFD600;
+    --yellow-warm: #FFC700;
+    --green: #00E676;
+    --red: #FF3D00;
+    --orange: #FF3D00;
+    --white: #FFFFFF;
+    --cream: #F4EEE4;
+    --ink: #0A0118;
+
+    --display: 'Bungee', sans-serif;
+    --shade: 'Bungee Shade', sans-serif;
+    --arcade: 'Russo One', sans-serif;
+    --body: 'Outfit', system-ui, sans-serif;
+
+    --radius: 18px;
+    --max: 1280px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--body);
+    background: var(--purple-dark);
+    color: var(--white);
+    line-height: 1.55;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+  .container {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+  }
+
+  /* ===== ANNONCE BAR ===== */
+  .marquee {
+    background: var(--ink);
+    color: var(--yellow);
+    overflow: hidden;
+    border-bottom: 3px solid var(--yellow);
+    position: relative;
+    z-index: 50;
+  }
+  .marquee-track {
+    display: flex;
+    gap: 48px;
+    padding: 10px 0;
+    white-space: nowrap;
+    animation: scroll 35s linear infinite;
+    font-family: var(--display);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+  }
+  .marquee-track span { display: inline-flex; align-items: center; gap: 48px; }
+  .marquee-track .dot { color: var(--white); }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ===== NAV ===== */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: rgba(26, 6, 64, 0.92);
+    border-bottom: 2px solid var(--purple-mid);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+  }
+  .logo-img {
+    height: 44px;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 2px 8px rgba(255, 214, 0, 0.25));
+  }
+  .logo-img-footer { height: 56px; margin-bottom: 12px; }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+  }
+  .nav-links a { transition: color .2s; position: relative; }
+  .nav-links a:hover { color: var(--yellow); }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -6px;
+    width: 0; height: 2px;
+    background: var(--yellow);
+    transition: width .25s;
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--yellow);
+    color: var(--purple-deep);
+    font-family: var(--display);
+    font-size: 13px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    border: 3px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+    transition: transform .15s, box-shadow .15s;
+    letter-spacing: 0.04em;
+  }
+  .btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--ink);
+  }
+  .btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--ink);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--yellow);
+    border-color: var(--yellow);
+    box-shadow: 4px 4px 0 var(--purple-deep);
+  }
+  .btn-outline:hover { box-shadow: 6px 6px 0 var(--purple-deep); }
+
+  .menu-toggle { display: none; }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    padding: 60px 0 100px;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 50% 50%, var(--purple-mid) 0%, var(--purple-deep) 60%, var(--purple-dark) 100%);
+  }
+  /* Burst rays — comme dans tes menu boards */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    background: repeating-conic-gradient(
+      from 0deg at 50% 50%,
+      transparent 0deg,
+      transparent 8deg,
+      rgba(255, 214, 0, 0.08) 8deg,
+      rgba(255, 214, 0, 0.08) 9deg,
+      transparent 9deg,
+      transparent 18deg
+    );
+    pointer-events: none;
+    animation: rotate-rays 80s linear infinite;
+  }
+  /* Speed lines — comme dans les BD/manga de combat */
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(90deg,
+        transparent 0px,
+        transparent 60px,
+        rgba(255, 214, 0, 0.04) 60px,
+        rgba(255, 214, 0, 0.04) 62px
+      );
+    pointer-events: none;
+    z-index: 1;
+  }
+  @keyframes rotate-rays { to { transform: rotate(360deg); } }
+
+  /* Scanlines arcade overlay */
+  .scanlines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 2px,
+      rgba(0, 0, 0, 0.06) 2px,
+      rgba(0, 0, 0, 0.06) 4px
+    );
+    opacity: 0.5;
+  }
+
+  /* Pixel art decoration corners */
+  .pixel-deco {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-image:
+      linear-gradient(var(--yellow) 25%, transparent 25%),
+      linear-gradient(90deg, var(--yellow) 25%, transparent 25%);
+    background-size: 16px 16px;
+    background-position: 0 0;
+    opacity: 0.18;
+    z-index: 1;
+  }
+  .pixel-1 { top: 20px; left: 20px; }
+  .pixel-2 { bottom: 40px; right: 40px; transform: rotate(45deg); }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-text { position: relative; }
+
+  .price-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--yellow);
+    color: var(--purple-deep);
+    font-family: var(--display);
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    margin-bottom: 28px;
+    border: 3px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+    transform: rotate(-2deg);
+  }
+  .price-badge .big { font-size: 22px; line-height: 1; }
+
+  .hero h1 {
+    font-family: var(--display);
+    font-size: clamp(64px, 11vw, 160px);
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .hero h1 .ready {
+    display: block;
+    transform: skewX(-10deg);
+    color: var(--white);
+    text-shadow:
+      4px 4px 0 var(--purple-deep),
+      0 0 20px rgba(255, 255, 255, 0.4),
+      0 0 40px rgba(106, 0, 255, 0.6);
+  }
+  .hero h1 .eat {
+    display: block;
+    transform: skewX(-10deg) translateX(30px);
+    color: var(--yellow);
+    text-shadow:
+      3px 3px 0 var(--ink),
+      6px 6px 0 var(--purple-deep),
+      0 0 30px rgba(255, 214, 0, 0.7),
+      0 0 60px rgba(255, 214, 0, 0.4);
+    animation: neon-flicker 4s ease-in-out infinite;
+  }
+  @keyframes neon-flicker {
+    0%, 100% { opacity: 1; }
+    97% { opacity: 1; }
+    97.5% { opacity: 0.7; }
+    98% { opacity: 1; }
+    98.5% { opacity: 0.5; }
+    99% { opacity: 1; }
+  }
+  .hero h1 .question {
+    color: var(--yellow);
+    text-shadow:
+      3px 3px 0 var(--ink),
+      0 0 30px rgba(255, 214, 0, 0.7);
+  }
+  .hero .subtitle-arcade {
+    font-family: var(--arcade);
+    font-size: clamp(16px, 2vw, 22px);
+    color: var(--white);
+    letter-spacing: 0.15em;
+    margin-bottom: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero .subtitle-arcade::before,
+  .hero .subtitle-arcade::after {
+    content: '▸';
+    color: var(--yellow);
+    animation: blink-arrow 1.2s steps(2) infinite;
+  }
+  .hero .subtitle-arcade::after { content: '◂'; }
+  @keyframes blink-arrow {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.2; }
+  }
+
+  .hero p.lead {
+    font-size: 18px;
+    max-width: 480px;
+    margin-bottom: 32px;
+    color: rgba(255, 255, 255, 0.88);
+    font-weight: 500;
+  }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  /* Fight scene frame — arcade banner style */
+  .hero-visual { position: relative; }
+  .fight-frame {
+    position: relative;
+    aspect-ratio: 1157 / 587;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 4px solid var(--yellow);
+    box-shadow:
+      8px 8px 0 var(--purple-deep),
+      0 0 50px rgba(255, 214, 0, 0.35),
+      0 0 100px rgba(106, 0, 255, 0.4);
+    background: var(--purple-deep);
+  }
+  .fight-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  .fight-tag {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--yellow);
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: 11px;
+    padding: 4px 14px;
+    border-radius: 999px;
+    border: 2px solid var(--ink);
+    z-index: 2;
+    letter-spacing: 0.15em;
+    box-shadow: 0 0 12px rgba(255, 214, 0, 0.7);
+    white-space: nowrap;
+  }
+
+  /* ===== LINEUP — 5 KROUSTYS ===== */
+  .lineup {
+    background: var(--purple);
+    padding: 100px 0 120px;
+    position: relative;
+    overflow: hidden;
+    border-top: 3px solid var(--yellow);
+  }
+  .lineup::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    background: repeating-conic-gradient(
+      from 0deg at 50% 30%,
+      transparent 0deg,
+      transparent 6deg,
+      rgba(255, 255, 255, 0.05) 6deg,
+      rgba(255, 255, 255, 0.05) 7deg
+    );
+    pointer-events: none;
+  }
+  .section-head {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 2;
+  }
+  .section-head .tag {
+    font-family: var(--arcade);
+    font-size: 14px;
+    color: var(--yellow);
+    letter-spacing: 0.2em;
+    margin-bottom: 14px;
+    display: inline-block;
+    padding: 6px 16px;
+    background: var(--ink);
+    border-radius: 999px;
+  }
+  .section-head h2 {
+    font-family: var(--display);
+    font-size: clamp(42px, 7vw, 92px);
+    line-height: 0.92;
+    color: var(--white);
+    text-shadow: 4px 4px 0 var(--purple-deep);
+  }
+  .section-head h2 .accent {
+    color: var(--yellow);
+    transform: skewX(-8deg);
+    display: inline-block;
+  }
+
+  /* ===== MENU BOARDS ===== */
+  .board-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .menu-board {
+    margin: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 4px solid var(--yellow);
+    box-shadow:
+      8px 8px 0 var(--purple-deep),
+      0 0 40px rgba(255, 214, 0, 0.25),
+      0 12px 60px rgba(0, 0, 0, 0.4);
+    transition: transform .3s, box-shadow .3s;
+    background: var(--purple-deep);
+    position: relative;
+    z-index: 2;
+  }
+  .menu-board:hover {
+    transform: translate(-3px, -3px);
+    box-shadow:
+      12px 12px 0 var(--purple-deep),
+      0 0 60px rgba(255, 214, 0, 0.4),
+      0 16px 80px rgba(0, 0, 0, 0.5);
+  }
+  .menu-board img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ===== STARTERS ===== */
+  .starters {
+    background: var(--purple-deep);
+    padding: 100px 0;
+    position: relative;
+    border-top: 3px solid var(--yellow);
+  }
+  .starters::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    background: repeating-conic-gradient(
+      from 0deg at 50% 30%,
+      transparent 0deg,
+      transparent 6deg,
+      rgba(255, 255, 255, 0.04) 6deg,
+      rgba(255, 255, 255, 0.04) 7deg
+    );
+    pointer-events: none;
+  }
+
+  /* ===== DESSERTS ===== */
+  .desserts {
+    background: var(--purple);
+    padding: 100px 0;
+    position: relative;
+    border-top: 3px solid var(--yellow);
+  }
+  .desserts::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    background: repeating-conic-gradient(
+      from 0deg at 50% 30%,
+      transparent 0deg,
+      transparent 6deg,
+      rgba(255, 255, 255, 0.05) 6deg,
+      rgba(255, 255, 255, 0.05) 7deg
+    );
+    pointer-events: none;
+  }
+
+  /* ===== CONCEPT ===== */
+  .concept {
+    background: var(--yellow);
+    padding: 100px 0;
+    color: var(--ink);
+    border-top: 4px solid var(--ink);
+    border-bottom: 4px solid var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+  .concept::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    background: repeating-conic-gradient(
+      from 0deg at 50% 50%,
+      transparent 0deg,
+      transparent 6deg,
+      rgba(43, 15, 102, 0.06) 6deg,
+      rgba(43, 15, 102, 0.06) 7deg
+    );
+    pointer-events: none;
+  }
+  .concept .section-head h2 { color: var(--ink); text-shadow: none; }
+  .concept .section-head .tag { background: var(--ink); color: var(--yellow); }
+  .concept-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 28px;
+    position: relative;
+    z-index: 2;
+  }
+  .pillar {
+    text-align: center;
+    padding: 36px 24px;
+    background: var(--purple-deep);
+    color: var(--white);
+    border: 3px solid var(--ink);
+    border-radius: var(--radius);
+    box-shadow: 8px 8px 0 var(--ink);
+    transition: transform .25s, box-shadow .25s;
+  }
+  .pillar:hover { transform: translate(-4px, -4px); box-shadow: 12px 12px 0 var(--ink); }
+  .pillar .num {
+    font-family: var(--display);
+    font-size: 12px;
+    color: var(--yellow);
+    letter-spacing: 0.2em;
+    margin-bottom: 14px;
+  }
+  .pillar .ico { font-size: 48px; margin-bottom: 14px; }
+  .pillar h3 {
+    font-family: var(--display);
+    font-size: 28px;
+    line-height: 1;
+    margin-bottom: 12px;
+    transform: skewX(-6deg);
+    color: var(--yellow);
+    display: inline-block;
+  }
+  .pillar p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.6;
+  }
+
+  /* ===== TROUVER ===== */
+  .trouver {
+    background: var(--purple-dark);
+    padding: 120px 0;
+  }
+  .trouver-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .info-card, .order-card {
+    background: var(--purple-card);
+    color: var(--white);
+    padding: 40px;
+    border-radius: var(--radius);
+    border: 3px solid var(--ink);
+    box-shadow: 8px 8px 0 var(--ink);
+  }
+  .info-card h3, .order-card h3 {
+    font-family: var(--display);
+    font-size: 32px;
+    margin-bottom: 24px;
+    color: var(--yellow);
+    transform: skewX(-6deg);
+    display: inline-block;
+  }
+  .info-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px dashed rgba(255,255,255,0.18);
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-row .ico {
+    flex: 0 0 auto;
+    width: 40px; height: 40px;
+    display: grid; place-items: center;
+    background: var(--yellow);
+    color: var(--ink);
+    border-radius: 50%;
+    font-size: 18px;
+  }
+  .info-row strong {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 4px;
+    font-family: var(--arcade);
+  }
+  .info-row span { font-size: 15px; line-height: 1.5; }
+
+  .order-card .order-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .order-card .order-buttons .btn { justify-content: center; width: 100%; }
+  .order-card .pin-badge {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .order-card .pin-badge .pin {
+    font-size: 80px;
+    animation: bob 2s ease-in-out infinite;
+    display: inline-block;
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .order-card p {
+    text-align: center;
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: var(--ink);
+    color: var(--white);
+    padding: 60px 0 30px;
+    border-top: 3px solid var(--yellow);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 40px;
+  }
+  .footer h4 {
+    font-family: var(--display);
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: var(--yellow);
+    letter-spacing: 0.04em;
+    transform: skewX(-6deg);
+    display: inline-block;
+  }
+  .footer ul { list-style: none; }
+  .footer li { padding: 6px 0; font-size: 14px; opacity: 0.85; }
+  .footer li a:hover { color: var(--yellow); }
+  .footer .logo { display: inline-block; margin-bottom: 12px; }
+  .footer p.about { font-size: 14px; opacity: 0.75; max-width: 360px; line-height: 1.6; margin-top: 4px; }
+  .socials {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .socials a {
+    width: 42px; height: 42px;
+    border: 2px solid var(--yellow);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    color: var(--yellow);
+    transition: background .2s, color .2s;
+  }
+  .socials a:hover { background: var(--yellow); color: var(--ink); }
+  .footer-bot {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px;
+    font-size: 13px;
+    opacity: 0.5;
+    text-align: center;
+  }
+
+  /* ===== ANIMATIONS ON SCROLL ===== */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s, transform .8s; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 980px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .fight-frame { max-width: 540px; margin: 0 auto; }
+    .concept-grid { grid-template-columns: 1fr; }
+    .trouver-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .menu-toggle {
+      display: grid; place-items: center;
+      width: 44px; height: 44px;
+      border: 2px solid var(--yellow);
+      border-radius: 12px;
+      background: transparent;
+      color: var(--yellow);
+    }
+    .nav-links.open {
+      display: flex;
+      position: absolute;
+      top: 100%; left: 0; right: 0;
+      background: var(--purple-dark);
+      flex-direction: column;
+      gap: 0;
+      padding: 16px 24px;
+      border-bottom: 2px solid var(--yellow);
+    }
+    .nav-links.open li { padding: 12px 0; border-bottom: 1px dashed rgba(255,255,255,0.15); }
+    .nav-links.open li:last-child { border-bottom: none; }
+    .nav .btn { display: none; }
+
+    .hero { padding: 40px 0 70px; }
+    .lineup, .starters, .desserts, .trouver, .concept { padding: 70px 0; }
+    .info-card, .order-card { padding: 28px; }
+    .menu-board { border-width: 3px; box-shadow: 5px 5px 0 var(--purple-deep), 0 8px 30px rgba(0,0,0,0.4); }
+    .logo-img { height: 36px; }
+    .nav-inner { padding: 12px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== ANNONCE BAR ===== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>⚡ READY TO EAT? <i class="dot">●</i> MENU 9.90€ AVEC BOISSON <i class="dot">●</i> COMBO CROUSTY + SAUCE = VICTOIRE <i class="dot">●</i> 100% HALAL <i class="dot">●</i> POULET PANÉ MAISON <i class="dot">●</i> DU CROUSTY, DU VRAI ⚡</span>
+    <span>⚡ READY TO EAT? <i class="dot">●</i> MENU 9.90€ AVEC BOISSON <i class="dot">●</i> COMBO CROUSTY + SAUCE = VICTOIRE <i class="dot">●</i> 100% HALAL <i class="dot">●</i> POULET PANÉ MAISON <i class="dot">●</i> DU CROUSTY, DU VRAI ⚡</span>
+  </div>
+</div>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo"><img src="logo.png" alt="Dely Krousty" class="logo-img"></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#lineup">Les Kroustys</a></li>
+      <li><a href="#starters">Starters</a></li>
+      <li><a href="#desserts">Desserts</a></li>
+      <li><a href="#concept">Le concept</a></li>
+      <li><a href="#trouver">Nous trouver</a></li>
+    </ul>
+    <a href="#commander" class="btn">COMMANDER ⚡</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+      <svg width="20" height="14" viewBox="0 0 20 14" fill="none"><path d="M1 1h18M1 7h18M1 13h18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="pixel-deco pixel-1"></div>
+  <div class="pixel-deco pixel-2"></div>
+
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="price-badge reveal">
+          <span>MENU</span>
+          <span class="big">9.90€</span>
+          <span>AVEC BOISSON</span>
+        </div>
+
+        <h1 class="reveal">
+          <span class="ready">READY</span>
+          <span class="eat">TO EAT<span class="question">?</span></span>
+        </h1>
+
+        <div class="subtitle-arcade reveal">CHOISIS TON KROUSTY</div>
+
+        <p class="lead reveal">Du crousty, du vrai. Poulet pané maison, sauces signatures qui claquent. Prêt à affronter la faim ?</p>
+
+        <div class="hero-ctas reveal">
+          <a href="#lineup" class="btn">VOIR LE MENU ⚡</a>
+          <a href="#commander" class="btn btn-outline">COMMANDER</a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="fight-frame">
+          <img src="hero-fight.jpg" alt="Dely Krousty — Ready to Fight">
+          <div class="fight-tag">★ DELY KROUSTY ★</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LINEUP — KROUSTY MENU BOARDS ===== -->
+<section class="lineup" id="lineup">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag reveal">★ SELECT YOUR FIGHTER ★</span>
+      <h2 class="reveal">CHOISIS<br>TON <span class="accent">KROUSTY.</span></h2>
+    </div>
+
+    <!-- Menu boards officiels -->
+    <div class="board-stack">
+      <figure class="menu-board reveal">
+        <img src="menu-original-curry.jpg" alt="Krousty Original & Krousty Curry — Riz, poulet pané maison, sauce, oignons crispy, ciboulette. Menu 9.90€ avec boisson.">
+      </figure>
+      <figure class="menu-board reveal">
+        <img src="menu-green-tandoori-dynamite.jpg" alt="Krousty Green, Tandoori & Dynamite — Riz, poulet pané maison, sauce, oignons crispy, ciboulette. Menu 9.90€ avec boisson.">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STARTERS ===== -->
+<section class="starters" id="starters">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag reveal">★ PRE-FIGHT ★</span>
+      <h2 class="reveal">LES <span class="accent">STARTERS.</span></h2>
+    </div>
+
+    <figure class="menu-board reveal">
+      <img src="menu-starters.jpg" alt="Starters Dely Krousty — Mozza Stick, Nems Poulet, Tenders Dynamite, Jalapenos. Dès 4€.">
+    </figure>
+  </div>
+</section>
+
+<!-- ===== DESSERTS & BOISSONS ===== -->
+<section class="desserts" id="desserts">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag reveal">★ FINISH HIM ★</span>
+      <h2 class="reveal">DESSERTS <span class="accent">& BOISSONS.</span></h2>
+    </div>
+
+    <figure class="menu-board reveal">
+      <img src="menu-desserts.jpg" alt="Desserts & Boissons — Tarte au Daim, Tarte Nutella Coco, Tiramisu, Boissons.">
+    </figure>
+  </div>
+</section>
+
+<!-- ===== CONCEPT ===== -->
+<section class="concept" id="concept">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag reveal">★ DU CROUSTY, DU VRAI ★</span>
+      <h2 class="reveal">3 RÈGLES,<br>ZÉRO <span class="accent" style="color: var(--purple-deep);">EXCEPTION.</span></h2>
+    </div>
+
+    <div class="concept-grid">
+      <div class="pillar reveal">
+        <div class="num">— 01 —</div>
+        <div class="ico">👨‍🍳</div>
+        <h3>FAIT MAISON</h3>
+        <p>Poulet pané maison, sauces signatures préparées sur place. Aucune triche, aucune sauce industrielle.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="num">— 02 —</div>
+        <div class="ico">✅</div>
+        <h3>100% HALAL</h3>
+        <p>Viandes certifiées halal et tracées. On ne transige jamais sur la qualité.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="num">— 03 —</div>
+        <div class="ico">⚡</div>
+        <h3>RAPIDE & GÉNÉREUX</h3>
+        <p>Cuit à la commande, portions qui calent, rapport qualité-prix imbattable. Combo crousty + sauce = victoire.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TROUVER ===== -->
+<section class="trouver" id="trouver">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag reveal">★ ON EST OÙ ? ★</span>
+      <h2 class="reveal">VENEZ <span class="accent">NOUS VOIR.</span></h2>
+    </div>
+
+    <div class="trouver-grid">
+      <div class="info-card reveal" id="contact">
+        <h3>INFOS PRATIQUES</h3>
+        <div class="info-row">
+          <div class="ico">📍</div>
+          <div>
+            <strong>Adresse</strong>
+            <span><a href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x47e673a74dbf5d7b:0x9107b74c7e60b50d" target="_blank" rel="noopener" style="color: var(--white); text-decoration: underline; text-decoration-color: var(--yellow); text-underline-offset: 3px;">202 Rue Jean Jaurès<br>94700 Maisons-Alfort</a></span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="ico">⏰</div>
+          <div>
+            <strong>Horaires</strong>
+            <span>Lun – Jeu : 11h30 → 23h00<br>Vendredi : 14h00 → 23h00<br>Sam – Dim : 11h30 → 23h00</span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="ico">📞</div>
+          <div>
+            <strong>Téléphone</strong>
+            <span>01 00 00 00 00</span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="ico">✉️</div>
+          <div>
+            <strong>Email</strong>
+            <span>contact@delykrousty.fr</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="order-card reveal" id="commander">
+        <h3>COMMANDER</h3>
+        <div class="pin-badge">
+          <span class="pin">⚡</span>
+        </div>
+        <p>Livraison ou click & collect, à toi de choisir.</p>
+        <div class="order-buttons">
+          <a href="#" class="btn">UBER EATS</a>
+          <a href="#" class="btn btn-outline">DELIVEROO</a>
+          <a href="#" class="btn btn-outline">CLICK & COLLECT</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#" class="logo"><img src="logo.png" alt="Dely Krousty" class="logo-img logo-img-footer"></a>
+        <p class="about">Du crousty, du vrai. Poulet pané maison, sauces signatures qui claquent, halal et fait sur place. Combo crousty + sauce = victoire.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.3a4.8 4.8 0 0 1-2.8-1 4.8 4.8 0 0 1-1.9-3.3h-3.4v13.2a2.7 2.7 0 1 1-2.7-2.7c.3 0 .6 0 .8.1V9.2a6 6 0 1 0 5.3 6V8.6a8 8 0 0 0 4.7 1.5V6.7a4.7 4.7 0 0 1 0-.4z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5h3l.5-3.5H14V3a1 1 0 0 1 1-1h2.5V0H14a4 4 0 0 0-4 4v1.5H7v3.5h3V20h4z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>NAVIGUER</h4>
+        <ul>
+          <li><a href="#lineup">Les Kroustys</a></li>
+          <li><a href="#starters">Starters</a></li>
+          <li><a href="#desserts">Desserts</a></li>
+          <li><a href="#concept">Le concept</a></li>
+          <li><a href="#trouver">Nous trouver</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>LÉGAL</h4>
+        <ul>
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">Confidentialité</a></li>
+          <li><a href="#">Allergènes</a></li>
+          <li><a href="#">CGU</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bot">
+      © 2026 Dely Krousty — Du crousty, du vrai™. Tous droits réservés.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), i * 60);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Mobile menu toggle
+  const toggle = document.getElementById('menuToggle');
+  const links = document.getElementById('navLinks');
+  toggle?.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+</script>
+
+</body>
+</html>
