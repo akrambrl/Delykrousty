@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mentions légales, politique de confidentialité, information allergènes et propriété intellectuelle — Dely Krousty.">
+<title>Infos légales — Dely Krousty</title>
+
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta name="theme-color" content="#7A1FC2">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Russo+One&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --purple: #7A1FC2;
+    --purple-deep: #2B0A4A;
+    --purple-mid: #4515A0;
+    --purple-dark: #160626;
+    --purple-card: #380985;
+    --pink: #D46BE8;
+    --yellow: #D46BE8;
+    --white: #FFFFFF;
+    --ink: #0A0118;
+
+    --display: 'Bungee', sans-serif;
+    --arcade: 'Russo One', sans-serif;
+    --body: 'Outfit', system-ui, sans-serif;
+
+    --radius: 16px;
+    --max: 880px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+  body {
+    font-family: var(--body);
+    background: var(--purple-dark);
+    color: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  a { color: var(--yellow); text-decoration: underline; text-underline-offset: 3px; }
+  a:hover { color: var(--white); }
+
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+  /* ===== NAV ===== */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: rgba(22, 6, 38, 0.92);
+    border-bottom: 2px solid var(--purple-mid);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .logo { display: inline-flex; align-items: center; line-height: 0; text-decoration: none; }
+  .logo-img { height: 40px; width: auto; display: block; }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--yellow);
+    font-family: var(--display);
+    font-size: 12px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 2px solid var(--yellow);
+    text-decoration: none;
+    box-shadow: 3px 3px 0 var(--purple-deep);
+    transition: transform .15s, box-shadow .15s;
+    letter-spacing: 0.05em;
+  }
+  .back-link:hover {
+    color: var(--yellow);
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--purple-deep);
+  }
+
+  /* ===== HEADER ===== */
+  .legal-header {
+    padding: 80px 0 40px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse at 50% 50%, var(--purple-mid) 0%, var(--purple-deep) 60%, var(--purple-dark) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .legal-header::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    background: repeating-conic-gradient(
+      from 0deg at 50% 50%,
+      transparent 0deg,
+      transparent 8deg,
+      rgba(212, 107, 232, 0.06) 8deg,
+      rgba(212, 107, 232, 0.06) 9deg
+    );
+    pointer-events: none;
+  }
+  .eyebrow {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--yellow);
+    font-family: var(--arcade);
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    padding: 6px 16px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 2;
+  }
+  h1.title {
+    font-family: var(--display);
+    font-size: clamp(36px, 6vw, 72px);
+    line-height: 0.95;
+    color: var(--white);
+    text-shadow: 3px 3px 0 var(--purple-deep);
+    margin-bottom: 14px;
+    transform: skewX(-6deg);
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+  }
+  .legal-header p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.85);
+    max-width: 540px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== TABLE OF CONTENTS ===== */
+  .toc {
+    background: var(--ink);
+    padding: 24px 28px;
+    border-radius: var(--radius);
+    border: 2px solid var(--purple);
+    box-shadow: 6px 6px 0 var(--purple-deep);
+    margin: -30px auto 50px;
+    position: relative;
+    z-index: 3;
+    max-width: 720px;
+  }
+  .toc-title {
+    font-family: var(--display);
+    color: var(--yellow);
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    margin-bottom: 14px;
+    transform: skewX(-6deg);
+    display: inline-block;
+  }
+  .toc-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+  }
+  .toc-list a {
+    display: inline-block;
+    background: var(--purple-card);
+    color: var(--white);
+    font-family: var(--arcade);
+    font-size: 12px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 2px solid var(--purple);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: background .2s, color .2s;
+  }
+  .toc-list a:hover { background: var(--yellow); color: var(--ink); border-color: var(--ink); }
+
+  /* ===== CONTENT ===== */
+  main.legal-content {
+    padding: 30px 0 80px;
+    background: var(--purple-dark);
+  }
+  article.section {
+    background: var(--purple-card);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius);
+    box-shadow: 6px 6px 0 var(--ink);
+    padding: 36px 36px 30px;
+    margin-bottom: 32px;
+    scroll-margin-top: 100px;
+  }
+  article.section h2 {
+    font-family: var(--display);
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.1;
+    color: var(--yellow);
+    margin-bottom: 8px;
+    transform: skewX(-6deg);
+    display: inline-block;
+  }
+  article.section .num {
+    font-family: var(--arcade);
+    color: var(--yellow);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    margin-bottom: 6px;
+    display: block;
+    opacity: 0.9;
+  }
+  article.section h3 {
+    font-family: var(--arcade);
+    color: var(--yellow);
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 28px 0 12px;
+  }
+  article.section p, article.section li {
+    font-size: 15px;
+    color: rgba(255,255,255,0.92);
+    margin-bottom: 12px;
+  }
+  article.section ul, article.section ol {
+    padding-left: 22px;
+    margin-bottom: 12px;
+  }
+  article.section li { margin-bottom: 6px; }
+  article.section strong { color: var(--white); font-weight: 700; }
+
+  /* Highlighted "to fill" placeholders */
+  .placeholder {
+    display: inline-block;
+    background: rgba(212, 107, 232, 0.18);
+    border: 1px dashed var(--yellow);
+    color: var(--yellow);
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-family: var(--arcade);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+
+  .info-table {
+    background: var(--purple-deep);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 16px 0 8px;
+    border: 1px solid var(--purple);
+  }
+  .info-table dl {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 8px 16px;
+  }
+  .info-table dt {
+    font-family: var(--arcade);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    align-self: baseline;
+  }
+  .info-table dd {
+    font-size: 15px;
+    color: var(--white);
+  }
+
+  .alert {
+    background: rgba(212, 107, 232, 0.12);
+    border-left: 4px solid var(--yellow);
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin: 18px 0;
+    font-size: 14px;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.6);
+    padding: 32px 0;
+    text-align: center;
+    border-top: 2px solid var(--yellow);
+    font-size: 13px;
+  }
+  .footer a { color: var(--yellow); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .container { padding: 0 16px; }
+    .nav-inner { padding: 12px 16px; }
+    .logo-img { height: 32px; }
+    .back-link { font-size: 11px; padding: 8px 14px; }
+    .legal-header { padding: 56px 0 30px; }
+    h1.title { font-size: clamp(28px, 8vw, 44px); }
+    .toc { padding: 20px; margin: -24px 16px 36px; }
+    article.section { padding: 24px 22px 22px; margin-bottom: 24px; }
+    article.section h2 { font-size: 22px; }
+    article.section h3 { font-size: 13px; }
+    article.section p, article.section li { font-size: 14px; }
+    .info-table { padding: 14px 16px; }
+    .info-table dl { grid-template-columns: 1fr; gap: 4px; }
+    .info-table dd { padding-bottom: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><img src="logo.png" alt="Dely Krousty" class="logo-img"></a>
+    <a href="index.html" class="back-link">← RETOUR AU SITE</a>
+  </div>
+</nav>
+
+<!-- ===== HEADER ===== -->
+<header class="legal-header">
+  <div class="container">
+    <span class="eyebrow">★ INFOS LÉGALES ★</span>
+    <h1 class="title">MENTIONS LÉGALES</h1>
+    <p>Tout ce qu'il faut savoir : éditeur du site, confidentialité, allergènes et propriété intellectuelle.</p>
+  </div>
+</header>
+
+<!-- ===== TOC ===== -->
+<div class="container">
+  <nav class="toc" aria-label="Table des matières">
+    <div class="toc-title">★ ACCÈS RAPIDE ★</div>
+    <ul class="toc-list">
+      <li><a href="#mentions">▸ Mentions légales</a></li>
+      <li><a href="#confidentialite">▸ Confidentialité</a></li>
+      <li><a href="#allergenes">▸ Allergènes</a></li>
+      <li><a href="#cgu">▸ Propriété & CGU</a></li>
+    </ul>
+  </nav>
+</div>
+
+<!-- ===== CONTENT ===== -->
+<main class="legal-content">
+  <div class="container">
+
+    <!-- 1. MENTIONS LÉGALES -->
+    <article class="section" id="mentions">
+      <span class="num">— 01 / 04 —</span>
+      <h2>Mentions légales</h2>
+      <p>Conformément à l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique (LCEN), il est précisé aux utilisateurs du site <strong>delykrousty.fr</strong> l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi.</p>
+
+      <h3>Éditeur du site</h3>
+      <div class="info-table">
+        <dl>
+          <dt>Dénomination sociale</dt><dd>DELY KROUSTY</dd>
+          <dt>Forme juridique</dt><dd>SASU (société par actions simplifiée unipersonnelle)</dd>
+          <dt>Capital social</dt><dd>1 000,00 €</dd>
+          <dt>SIREN</dt><dd>103 870 259</dd>
+          <dt>SIRET (siège)</dt><dd>103 870 259 00019</dd>
+          <dt>RCS</dt><dd>Créteil 103 870 259 (immatriculée le 22/04/2026)</dd>
+          <dt>N° TVA intracom.</dt><dd>FR35 103 870 259</dd>
+          <dt>Code APE / NAF</dt><dd>56.10C — Restauration de type rapide</dd>
+          <dt>Adresse du siège</dt><dd>202 Rue Jean Jaurès, 94700 Maisons-Alfort, France</dd>
+          <dt>Téléphone</dt><dd><span class="placeholder">À COMPLÉTER</span></dd>
+          <dt>Email</dt><dd>contact@delykrousty.fr</dd>
+        </dl>
+      </div>
+
+      <h3>Directeur de la publication</h3>
+      <p>Karim Kabouch, président de la SASU Dely Krousty.</p>
+
+      <h3>Hébergeur</h3>
+      <div class="info-table">
+        <dl>
+          <dt>Société</dt><dd>GitHub, Inc.</dd>
+          <dt>Adresse</dt><dd>88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis</dd>
+          <dt>Site web</dt><dd><a href="https://github.com" target="_blank" rel="noopener">github.com</a></dd>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 2. CONFIDENTIALITÉ -->
+    <article class="section" id="confidentialite">
+      <span class="num">— 02 / 04 —</span>
+      <h2>Politique de confidentialité</h2>
+      <p>Cette politique a été mise à jour le 9 mai 2026.</p>
+
+      <h3>Données collectées</h3>
+      <p>Le site delykrousty.fr est un <strong>site vitrine</strong>. Aucune donnée personnelle n'est collectée directement par le site : aucun formulaire de contact, aucune inscription, aucun système de commande en ligne.</p>
+      <p>Les commandes sont passées :</p>
+      <ul>
+        <li>Par téléphone (les données sont alors traitées hors site)</li>
+        <li>Via les plateformes de livraison tierces (Uber Eats, Deliveroo) qui appliquent leurs propres politiques de confidentialité</li>
+      </ul>
+
+      <h3>Cookies & traceurs</h3>
+      <p>Le site utilise les services tiers suivants, qui peuvent déposer leurs propres cookies :</p>
+      <ul>
+        <li><strong>Google Maps</strong> (affichage de la carte) — soumis à la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">politique de confidentialité Google</a></li>
+        <li><strong>Liens vers les réseaux sociaux</strong> (Instagram, TikTok, Snapchat) — soumis aux politiques de chaque plateforme</li>
+        <li><strong>Google Fonts</strong> (chargement des polices) — peut transmettre l'adresse IP à Google</li>
+      </ul>
+      <p>Aucun cookie publicitaire ni statistique n'est déposé directement par delykrousty.fr.</p>
+
+      <h3>Vos droits (RGPD)</h3>
+      <p>Conformément au Règlement Général sur la Protection des Données (RGPD) et à la Loi Informatique et Libertés, vous disposez des droits suivants :</p>
+      <ul>
+        <li>Droit d'accès, de rectification et d'effacement de vos données</li>
+        <li>Droit à la portabilité de vos données</li>
+        <li>Droit d'opposition et de limitation du traitement</li>
+      </ul>
+      <p>Pour exercer ces droits ou pour toute question : <a href="mailto:contact@delykrousty.fr">contact@delykrousty.fr</a></p>
+      <p>Vous pouvez également déposer une réclamation auprès de la <strong>CNIL</strong> : <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a></p>
+    </article>
+
+    <!-- 3. ALLERGÈNES -->
+    <article class="section" id="allergenes">
+      <span class="num">— 03 / 04 —</span>
+      <h2>Information allergènes</h2>
+      <p>Conformément au <strong>Règlement (UE) n° 1169/2011</strong> dit "INCO", Dely Krousty informe ses clients sur la présence des 14 allergènes majeurs susceptibles de figurer dans nos préparations.</p>
+
+      <h3>Les 14 allergènes à déclaration obligatoire</h3>
+      <ol>
+        <li>Céréales contenant du gluten (blé, seigle, orge, avoine, épeautre, kamut)</li>
+        <li>Crustacés et produits à base de crustacés</li>
+        <li>Œufs et produits à base d'œufs</li>
+        <li>Poissons et produits à base de poissons</li>
+        <li>Arachides et produits à base d'arachides</li>
+        <li>Soja et produits à base de soja</li>
+        <li>Lait et produits laitiers (y compris lactose)</li>
+        <li>Fruits à coque (amandes, noisettes, noix, noix de cajou, noix de pécan, noix du Brésil, pistaches, noix de Macadamia)</li>
+        <li>Céleri et produits à base de céleri</li>
+        <li>Moutarde et produits à base de moutarde</li>
+        <li>Graines de sésame et produits à base de sésame</li>
+        <li>Anhydride sulfureux et sulfites (concentration > 10 mg/kg ou L)</li>
+        <li>Lupin et produits à base de lupin</li>
+        <li>Mollusques et produits à base de mollusques</li>
+      </ol>
+
+      <h3>Informations détaillées par produit</h3>
+      <p>La liste détaillée des allergènes pour chaque produit est disponible :</p>
+      <ul>
+        <li>📍 <strong>En boutique</strong>, sur simple demande au comptoir</li>
+        <li>📞 Par téléphone au <span class="placeholder">À COMPLÉTER</span></li>
+        <li>✉️ Par email : <a href="mailto:contact@delykrousty.fr">contact@delykrousty.fr</a></li>
+      </ul>
+
+      <div class="alert">
+        <strong>⚠️ Risque de traces.</strong> Nos préparations sont réalisées dans une cuisine où sont manipulés tous les allergènes ci-dessus. Malgré nos précautions, la présence de traces ne peut être totalement exclue. Les personnes souffrant d'allergies sévères sont invitées à nous prévenir <strong>avant toute commande</strong>.
+      </div>
+    </article>
+
+    <!-- 4. CGU & PROPRIÉTÉ -->
+    <article class="section" id="cgu">
+      <span class="num">— 04 / 04 —</span>
+      <h2>Propriété intellectuelle & CGU</h2>
+
+      <h3>Propriété intellectuelle</h3>
+      <p>L'ensemble du contenu du site delykrousty.fr (logo, photographies, textes, design, charte graphique, illustrations, slogan « Délicieux & Croustillant ») est la <strong>propriété exclusive de Dely Krousty</strong>.</p>
+      <p>Toute reproduction, représentation, modification, publication ou adaptation, totale ou partielle, par quelque procédé que ce soit, est <strong>interdite sans l'autorisation écrite préalable</strong> de Dely Krousty.</p>
+      <p>Tout usage non autorisé constitue une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de la propriété intellectuelle.</p>
+
+      <h3>Liens externes</h3>
+      <p>Le site contient des liens vers des sites tiers (Uber Eats, Deliveroo, Google Maps, Instagram, TikTok, Snapchat). Dely Krousty n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu, leur fonctionnement ou les pratiques de leurs éditeurs.</p>
+
+      <h3>Limitation de responsabilité</h3>
+      <p>Les informations présentées sur ce site (carte, prix, horaires, allergènes) sont fournies à titre indicatif. Elles peuvent évoluer sans préavis. En cas d'erreur ou d'incohérence, l'information communiquée en boutique fait foi.</p>
+
+      <h3>Droit applicable</h3>
+      <p>Le présent site et son contenu sont régis par le <strong>droit français</strong>. Tout litige relatif à son utilisation relèvera de la compétence exclusive des tribunaux français.</p>
+
+      <h3>Crédits</h3>
+      <div class="info-table">
+        <dl>
+          <dt>Direction artistique</dt><dd>Dely Krousty</dd>
+          <dt>Hébergement</dt><dd>GitHub Pages</dd>
+          <dt>Polices</dt><dd>Google Fonts (Bungee, Russo One, Outfit)</dd>
+          <dt>Cartographie</dt><dd>Google Maps</dd>
+        </dl>
+      </div>
+
+      <h3>Contact</h3>
+      <p>Pour toute question légale ou pour exercer vos droits : <a href="mailto:contact@delykrousty.fr">contact@delykrousty.fr</a></p>
+    </article>
+
+  </div>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    © 2026 Dely Krousty — Délicieux & Croustillant™. Tous droits réservés. <a href="index.html">Retour au site</a>
+  </div>
+</footer>
+
+</body>
+</html>
