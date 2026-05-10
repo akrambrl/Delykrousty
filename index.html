@@ -815,7 +815,11 @@
     .concept-grid { grid-template-columns: 1fr; gap: 16px; }
     .trouver-grid { grid-template-columns: 1fr; }
     .map-card { min-height: 360px; }
-    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px 24px;
+    }
+    .footer-grid > div:first-child { grid-column: 1 / -1; }
     .container { padding: 0 20px; }
   }
 
